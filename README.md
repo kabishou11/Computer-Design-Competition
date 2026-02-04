@@ -259,16 +259,33 @@ Transformer = 注意力 + 残差 + 层归一化 + FFN
 
 ## 技术栈概览
 
-| 技术领域 | 框架/工具 | 理论要点 |
-|----------|----------|---------|
-| **LLM理论** | Transformers | 注意力机制、反向传播 |
-| **RAG理论** | LangChain | 检索质量、信息融合 |
-| **Agent理论** | LangGraph | 规划推理、工具调用 |
-| **评估理论** | RAGAs | 指标设计、效果评估 |
+### 核心框架
+
+| 技术领域 | 框架/工具 | 用途 |
+|----------|----------|------|
+| **LLM框架** | PyTorch, Transformers | 模型训练与推理 |
+| **RAG框架** | LangChain, LlamaIndex | 检索增强生成 |
+| **Agent框架** | LangGraph, AgentScope | 智能体开发 |
+| **向量数据库** | Milvus, FAISS, Chroma | 向量存储与检索 |
+| **知识图谱** | Neo4j | 知识图谱存储 |
+| **低代码平台** | Dify, Coze | 快速原型开发 |
+| **多模态** | LLaVA, BLIP-2 | 视觉语言模型 |
+| **评估工具** | RAGAs | RAG系统评估 |
+
+### 模型选择建议
+
+根据硬件条件和项目需求选择合适的模型：
+
+| 场景 | 推荐模型 | 显存要求 | 说明 |
+|------|----------|----------|------|
+| **入门学习** | Qwen3-1.5B, Phi-3.5-mini | 4-8GB | 适合本地CPU/GPU推理 |
+| **应用开发** | Qwen3-7B, Llama3-8B | 16-24GB | 平衡性能与资源 |
+| **竞赛项目** | Qwen3-14B, Yi-1.5-34B | 48GB+ | 高性能需求 |
+| **API调用** | GPT-4, Claude-3.5, 通义千问 | 无需本地 | 云端服务 |
 
 ---
 
-## 学习建议
+## 比赛选题建议（例子，仅作学习参考）
 
 ### 第一阶段：理论基础（3-4周）
 
@@ -313,9 +330,119 @@ Transformer = 注意力 + 残差 + 层归一化 + FFN
 
 ### 学习导向
 
-- 清晰的路径规划
-- 丰富的参考文献
-- 深入的原理解释
+| 项目 | 技术栈 | 天数 | 目标 |
+|-----|--------|-----|------|
+| 智能客服系统 | RAG + 对话管理 | 1周 | 完整可运行系统 |
+| 知识库问答 | 向量检索 + 重排序 | 1周 | 高质量检索 |
+| 研究助手Agent | Agent + 多工具 | 2周 | 多功能集成 |
+
+### 第四阶段：比赛准备（建议2周）
+
+| 任务 | 内容 | 天数 |
+|-----|------|-----|
+| 文档整理 | 技术报告、PPT | 5天 |
+| 答辩演练 | 模拟答辩、Q&A准备 | 5天 |
+
+---
+
+## 环境配置
+
+### 基础环境要求
+
+- **Python**: 3.10+
+- **CUDA**: 12.0+（GPU训练需要）
+- **RAM**: 16GB+
+- **硬盘**: 50GB+
+
+### 安装依赖
+
+```bash
+# 克隆项目
+git clone https://github.com/kabishou11/Computer-Design-Competition.git
+cd Computer-Design-Competition
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 或分步安装
+pip install torch transformers accelerate
+
+# RAG相关
+pip install langchain llama-index sentence-transformers pymilvus faiss-cpu chromadb
+
+# Agent相关
+pip install langgraph agentscope
+
+# 评估工具
+pip install ragas
+```
+
+### Docker部署（可选）
+
+```bash
+# 使用Docker运行
+docker build -t llm-course .
+docker run -p 8000:8000 llm-course
+```
+
+---
+
+## 快速开始
+
+### 1. 学习路线
+
+```bash
+# 第一步：阅读基础知识
+docs/01-LLM基础/
+
+# 第二步：学习RAG技术
+docs/02-RAG技术/
+
+# 第三步：掌握Agent开发
+docs/03-Agent开发/
+
+# 第四步：实践项目
+docs/05-实战项目/
+```
+
+### 2. 运行示例代码
+
+```bash
+# RAG示例
+python code/RAG/basic_rag.py
+
+# Agent示例
+python code/Agent/react_agent.py
+
+# 部署示例
+python code/Deployment/api_server.py
+```
+
+---
+
+## 新增内容（2024-2026最新技术）
+
+### 高级RAG技术
+
+- 查询优化（HyDE、查询改写）
+- Agentic RAG（Agent驱动检索）
+- Self-RAG（自反思RAG）
+- RAGAs评估方法
+
+### 高级Agent技术
+
+- 记忆系统（短期+长期）
+- 多Agent协作（层级、辩论）
+- 自定义工具构建
+- Agent评估框架
+
+### 多模态入门
+
+- LLaVA视觉语言模型
+- BLIP-2图像理解
+- 语音识别与合成
+- 多模态应用场景
+>>>>>>> e64a95ec3526df3c80b52a3dc59260538d8d053b
 
 ---
 
